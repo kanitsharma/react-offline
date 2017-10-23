@@ -34,7 +34,7 @@ self.addEventListener('notificationclick', event => {
   var promise = new Promise(function (resolve) {
     resolve()
   }).then(function () {
-    return clients.openWindow('https://kanitsharma.github.io/react-offline')
+    return clients.openWindow('https://react-offline.herokuapp.com/#/home')
   })
   event.waitUntil(promise)
 })

@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   fireConnect: () => dispatch(actionSpreader('CONNECTDB')),
   directConnect: payload => {
     dispatch(actionSpreader('FIREDB', {
-      database: payload
+      database: payload.data
     }))
     dispatch(actionSpreader('SHOW'))
   }
