@@ -54,7 +54,7 @@ curl -X POST -H "Authorization: key=AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY" -H 
 }' "https://fcm.googleapis.com/fcm/send"
 ```
 
-### cURL
+### example
 ```
 curl -X POST -H "Authorization: key=AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY" -H "Content-Type: application/json" -d '{
   "data": {
@@ -130,4 +130,4 @@ curl -X POST -H "Authorization: key=AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY" -H 
 }' "https://fcm.googleapis.com/fcm/send"
 ```
 
-## IF you find any errors related to tkens please unregister the service worker and refresh the page
+## If you find any errors related to tokens please unregister the service worker and refresh the page
