@@ -14,13 +14,13 @@ import MainComponent from './main'
     implementing our wrapper around increment; the component doesn't care   */
 
 const mapDispatchToProps = dispatch => ({
-  fireConnect: () => {
-    dispatch(actionSpreader('CONNECTDB'))
+  fireConnect: () => dispatch(actionSpreader('CONNECTDB')),
+  directConnect: payload => {
+    dispatch(actionSpreader('FIREDB', {
+      database: payload
+    }))
     dispatch(actionSpreader('SHOW'))
-  },
-  directConnect: payload => dispatch(actionSpreader('FIREDB', {
-    database: payload
-  }))
+  }
 })
 
 const mapStateToProps = (state) => ({

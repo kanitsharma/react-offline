@@ -15,7 +15,7 @@ export function * fireListener (action) {
       console.log('Unable to get permission to notify.', err)
     })
     .then(currentToken => {
-      console.log(currentToken)
+      alert(currentToken)
     })
     .catch(err => {
       console.log('An error occurred while retrieving token. ', err)
@@ -33,8 +33,9 @@ export function * fireListener (action) {
     'data': payload.data
   })
   yield put(actionSpreader('FIREDB', {
-    database: JSON.stringify(payload.data)
+    database: payload.data
   }))
+  yield put(actionSpreader('SHOW'))
 }
 
 export function * fireSaga () {

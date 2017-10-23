@@ -17,16 +17,14 @@ export default class Home extends Component {
     firebase.initializeApp(config)
   }
   componentDidMount = () => {
-    firebase.database().ref('/').once('value').then(snapshot => {
-      this.props.directConnect(snapshot.val())
-      if(snapshot.val()) {
-        this.props.fireConnect()
+    firebase.database().ref('/').on('value').then(snapshot => {
+      if (snapshot.val()) {
+        this.props.directConnect(snapshot.val())
       }
     })
   }
   render = () => {
     const { fireConnect, database, show } = this.props
-    console.log(database)
     return (
       <div className='wrapper'>
         {show ? <div className='wrapper'><div className='header2'><p>Praktice.ai Assignment</p></div><DBdata data={database} /></div>

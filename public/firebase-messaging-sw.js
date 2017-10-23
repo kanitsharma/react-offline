@@ -18,13 +18,13 @@ const messaging = firebase.messaging()
 messaging.setBackgroundMessageHandler(payload => {
   const { data } = payload
   firebase.database().ref('/').set({
-    'data': JSON.stringify(data)
+    'data': data
   })
 
   const notificationTitle = 'New Notifications'
   const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png',
+    body: 'Click to view notifications',
+    icon: 'https://i.pinimg.com/736x/3f/4b/47/3f4b472cbedeb312bd83e13f22f8f27c--p-logo-letter-logo.jpg',
   }
   self.registration.showNotification(notificationTitle, notificationOptions)
 })
@@ -34,7 +34,7 @@ self.addEventListener('notificationclick', event => {
   var promise = new Promise(function (resolve) {
     resolve()
   }).then(function () {
-    return clients.openWindow('http://localhost:3000')
+    return clients.openWindow('http://kanitsharma.github.io/react-offline')
   })
   event.waitUntil(promise)
 })
