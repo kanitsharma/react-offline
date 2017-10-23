@@ -17,7 +17,7 @@ export default class Home extends Component {
     firebase.initializeApp(config)
   }
   componentDidMount = () => {
-    firebase.database().ref('/').on('value').then(snapshot => {
+    firebase.database().ref('/').on('value',(snapshot) => {
       if (snapshot.val()) {
         this.props.directConnect(snapshot.val())
       }
