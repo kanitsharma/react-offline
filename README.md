@@ -1,63 +1,55 @@
-# Shinobi
+#React-offline
 
-<img src='inspiration.png' align='right' height='100px'>
+## POST request
 
-_An awesome boilerplate for faster web application development with Redux._
+## Remember your IID token will logged in the console
 
-#### Styles of Configurations
+### HTTP
+```
+POST /fcm/send HTTP/1.1
+Host: fcm.googleapis.com
+Authorization: key=AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY
+Content-Type: application/json
 
-- *With Sagas* uses sagas to manage asynchronous actions at branch `master`
-- *With Epics* uses Redux-observables to manage asynchronous actions at branch `redux-observables`
-- *With RRv4* uses React Router v4 for routes instead of v3 at branch `rrv4`
-- *With Flow-Typed* added flow typed for flow powered type checking at branch `flow-typed`
+{
+  "data": {
+      //your data
+  },
+  "to": "YOUR-IID-TOKEN"
+}
+```
 
-#### Features
+### Fetch
+```js
+var key = 'AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY';
+var to = 'YOUR-IID-TOKEN';
+var data = {
+  //your data
+};
 
-###### _Hot Module Replacement_
+fetch('https://fcm.googleapis.com/fcm/send', {
+  'method': 'POST',
+  'headers': {
+    'Authorization': 'key=' + key,
+    'Content-Type': 'application/json'
+  },
+  'body': JSON.stringify({
+    'data': data,
+    'to': to
+  })
+}).then(function(response) {
+  console.log(response);
+}).catch(function(error) {
+  console.error(error);
+})
+```
 
-Pure Functional Components and Redux facilitates Faster Web Development without reloading of web page.
-
-###### _Code Splitting_
-
-Lesser Application Load Times with Code Splitting at different routes.
-
-- Promise based Module Loading with RRv4
-- Callback based Module Loading with RRv3
-
-###### _Faster Builds_
-
-Faster and Optimised builds with Webpack v2 and Tree Shaking by Webpack.
-
-###### _Sideeffects_
-
-Asynchronous Actions Management with Thunks + Sagas _(at branch `master`)_ or Thunks + Epics _(at branch `redux-observables`)_.
-
-###### _Connectors_
-
-Modules which directly connects to Redux Store eg Notifier(or Toaster).
-
-###### _Dynamic Routing with POJO Routes_
-
-Plainroute Object facilitates
-
-- Dynamic injection of routes and components
-- Centralised Route Configuration
-- Async Loading of Modules in Code Splitting
-
-#### Installation and Development
-
-- Clone the Repo `git clone https://github.com/rajatsharma305/shinobi`.
-
-- Change directory `cd shinobi`.
-
-- Checkout to required branch according to the style of configuration.
-
-- Remove git records `rm -rf .git`
-
-- `npm i or yarn install` to install dependencies.
-
-- `npm start or yarn start` to start development server.
-
-- `npm build` to build project.
-
-- `npm deploy` to deploy to `gh-pages`.
+### cURL
+```
+curl -X POST -H "Authorization: key=AIzaSyA7Kn6seVimb8P-sVTCLFnw9VmXuS2mohY" -H "Content-Type: application/json" -d '{
+  "data": {
+    //your data
+  },
+  "to": "YOUR-IID-TOKEN"
+}' "https://fcm.googleapis.com/fcm/send"
+```

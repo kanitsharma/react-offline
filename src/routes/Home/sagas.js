@@ -15,7 +15,8 @@ export function * fireListener (action) {
       console.log('Unable to get permission to notify.', err)
     })
     .then(currentToken => {
-      alert(currentToken)
+      alert('Check console for token')
+      console.log(currentToken)
     })
     .catch(err => {
       console.log('An error occurred while retrieving token. ', err)
